@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     end
     def show
         @comment=Comment.new
-        @comments=@posts.comments.order(created_at: :desc)
+        @comments= @posts.comments.order(created_at: :desc)
     end
     def destroy
         @posts.destroy

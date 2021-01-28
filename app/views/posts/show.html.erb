@@ -13,10 +13,10 @@
     <div>
     <%= f.label :comment %>
     <%= f.text_area :body, placeholder: :comments, class: "form-control col" %>
-    <%= f.submit :Submit, class: 'btn btn-outline-primary btn-sm'%>
+    <%= f.submit :Submit, class: 'btn btn-outline-primary btn-sm mt-2'%>
     </div><br>
     <% end %>
-    <% @posts.comments.each do |c| %>
+    <% @comments.each do |c| %>
     <div>
         <div><%= c.body %></div>
         <small>

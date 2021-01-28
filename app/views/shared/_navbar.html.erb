@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-expand navbar-dark bg-dark justify-content-between py-0">
+    <%= link_to "Blogs On Rails", posts_path, :class=>"navbar-brand mr-auto" %>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, :class=>"nav-link" %></li>
+        </li>
+        <li class="nav-item">
+            <%= link_to "New Post", new_post_path, :class=>"nav-link" %></li>
+        </li>
+        <!-- <%# if user_signed_in? %> class="nav-item">
+        <span class="navbar-text">| Hello <%#= current_user.full_name.split.map(&:capitalize).join(' ') %> |</span>
+        </li>
+        <li class="nav-item">
+        <%#= link_to "Logout", session_path, method: :delete,
+        data: {confirm: 'Are you sure you want to log out?'}, :class=>"nav-link"
+         %>
+        </li>
+        <%# else %>
+        <li class="nav-item">
+            <%#= link_to "Sign In", new_session_path, :class=>"nav-link" %></li>
+        </li>
+        <li class="nav-item">
+            <%#= link_to "Sign Up", new_user_path, :class=>"nav-link" %></li>
+        </li>
+        <%# end %> -->
+      </ul>
+  </nav>

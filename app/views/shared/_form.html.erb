@@ -1,0 +1,19 @@
+
+<div class="container" style="max-width: 992px;">
+    <%= form_with model:@posts, :class=>"form-group", local: true do |form| %>
+    <% if @posts.errors.present? %>
+    <%= @posts.errors.full_messages.join(', ')%>
+    <% end %>
+        <%= label_tag :title %>
+        <div class="input-group">
+            <%= form.text_field :title, :class=>'form-control', :required=>true %>
+         </div>
+        <%= label_tag :body %>
+        <div class="input-group">
+            <%= form.text_area :body, cols:50 , rows:5,  :class=>'form-control', :required=>true %>
+         </div>
+         <br>
+         <%=form.submit class: 'btn btn-outline-primary' %> 
+        <% end %>
+        <br><br>
+</div>

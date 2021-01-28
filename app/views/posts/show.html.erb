@@ -1,0 +1,28 @@
+
+<div class="container card" style="max-width: 992px;">
+    <h3><%= @posts.title %></h3>
+    <p><%= @posts.body %></p>
+    <p><%= time_ago_in_words(@posts.created_at) %> ago</p>
+    <div>
+        <%# if can? :crud, @posts %>
+        <%= link_to "Edit", edit_post_path(@posts.id), :class=>"btn btn-outline-primary btn-sm" %>  
+        <%= link_to "Delete", post_path, method: :delete,data:{confirm: "Are you sure ?"}, :class=>"btn btn-outline-danger btn-sm" %>
+        <%# end %>
+    </div><br>
+    <%= form_with(model: [@posts, @comment], local: true) do |f| %>
+    <div>
+    <%= f.label :comment %>
+    <%= f.text_area :body, placeholder: :comments, class: "form-control col" %>
+    <%= f.submit :Submit, class: 'btn btn-outline-primary btn-sm'%>
+    </div><br>
+    <% end %>
+    <% @posts.comments.each do |c| %>
+    <div>
+        <div><%= c.body %></div>
+        <small>
+            Commented <%= time_ago_in_words(c.created_at) %> ago - 
+            <%= link_to "Delete", post_comment_path(@posts,c), method: :delete,data: {confirm: "Are you sure?"}, style: "color:red" %>
+        </small>
+    </div><br>
+    <% end %>
+</div>

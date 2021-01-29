@@ -2,7 +2,7 @@
 <div class="container card" style="max-width: 992px;">
     <h3><%= @posts.title %></h3>
     <p><%= @posts.body %></p>
-    <p><%= time_ago_in_words(@posts.created_at) %> ago</p>
+    <p>Posted <%= time_ago_in_words(@posts.created_at) %> ago by <%= @posts.user.name %></p>
     <div>
         <%# if can? :crud, @posts %>
         <%= link_to "Edit", edit_post_path(@posts.id), :class=>"btn btn-outline-primary btn-sm" %>  
@@ -20,7 +20,7 @@
     <div>
         <div><%= c.body %></div>
         <small>
-            Commented <%= time_ago_in_words(c.created_at) %> ago - 
+            Commented <%= time_ago_in_words(c.created_at) %> ago by <%= c.user.name %>- 
             <%= link_to "Delete", post_comment_path(@posts,c), method: :delete,data: {confirm: "Are you sure?"}, style: "color:red" %>
         </small>
     </div><br>

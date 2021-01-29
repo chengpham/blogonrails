@@ -8,21 +8,20 @@
         <li class="nav-item">
             <%= link_to "New Post", new_post_path, :class=>"nav-link" %></li>
         </li>
-        <!-- <%# if user_signed_in? %> class="nav-item">
-        <span class="navbar-text">| Hello <%#= current_user.full_name.split.map(&:capitalize).join(' ') %> |</span>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+            <%= link_to current_user.full_name, edit_user_path(current_user), :class=>"nav-link" %>
         </li>
         <li class="nav-item">
-        <%#= link_to "Logout", session_path, method: :delete,
-        data: {confirm: 'Are you sure you want to log out?'}, :class=>"nav-link"
-         %>
+        <%= link_to "Logout", session_path, method: :delete, data: {confirm: 'Are you sure you want to log out?'}, :class=>"nav-link" %>
         </li>
-        <%# else %>
+        <% else %>
         <li class="nav-item">
-            <%#= link_to "Sign In", new_session_path, :class=>"nav-link" %></li>
+            <%= link_to "Sign In", new_session_path, :class=>"nav-link" %></li>
         </li>
         <li class="nav-item">
-            <%#= link_to "Sign Up", new_user_path, :class=>"nav-link" %></li>
+            <%= link_to "Sign Up", new_user_path, :class=>"nav-link" %></li>
         </li>
-        <%# end %> -->
+        <% end %>
       </ul>
   </nav>

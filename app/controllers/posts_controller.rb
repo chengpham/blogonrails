@@ -18,6 +18,11 @@ class PostsController < ApplicationController
         @posts=Post.new
     end
     def edit 
+        if can?(:edit, @posts)
+            render :edit
+        else
+            redirect_to post_path(@posts)
+        end
     end
     def show
         @comment=Comment.new
@@ -25,6 +30,7 @@ class PostsController < ApplicationController
     end
     def destroy
         @posts.destroy
+        flash[:danger]= 'deleted job post'
         redirect_to posts_path
     end
     def update
@@ -42,7 +48,7 @@ class PostsController < ApplicationController
         params.require(:post).permit(:title, :body)
     end
     def authorize_user!
-        redirect_to root_path, alert: "Not Authorized" unless can?(:crud, @posts)
+        redirect_to post_path(@posts), alert: "Not Authorized" unless can?(:crud, @posts)
     end
 end
 
